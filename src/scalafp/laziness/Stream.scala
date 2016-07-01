@@ -62,9 +62,6 @@ trait Stream[+A] {
     foldRight(None: Option[A])((x, _) => Some(x))
   }
 
-  // 5.7 map, filter, append, flatmap using foldRight. Part of the exercise is
-  // writing your own function signatures.
-
   def map[B](f: A => B): Stream[B] = {
     foldRight(empty: Stream[B])((x, acc) => cons(f(x), acc))
   }

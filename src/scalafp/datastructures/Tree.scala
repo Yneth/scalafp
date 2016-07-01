@@ -19,7 +19,7 @@ object Tree {
     case Branch(l, r) => max(l) max max(r)
   }
 
-  def maxFold(t: Tree[Int]): Int = {
+  def maxViaFold(t: Tree[Int]): Int = {
     fold(t)(a => a)(_ max _)
   }
 
@@ -28,7 +28,7 @@ object Tree {
     case Branch(l, r) => 1 + (depth(l) max depth(r))
   }
 
-  def depthFold[A](t: Tree[A]): Int = {
+  def depthViaFold[A](t: Tree[A]): Int = {
     fold(t)(_ => 0)((b1, b2) => 1 + b1 max b2)
   }
 

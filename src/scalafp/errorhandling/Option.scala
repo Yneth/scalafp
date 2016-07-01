@@ -1,7 +1,7 @@
 package scalafp.errorhandling
 
 import scala.{ Option => _, Some => _, Either => _, _ }
-// hide std library `Option`, `Some` and `Either`, since we are writing our own in this chapter
+// hide std library `Option`, `Some` and `Either`
 
 sealed trait Option[+A] {
   def map[B](f: A => B): Option[B] = this match {
