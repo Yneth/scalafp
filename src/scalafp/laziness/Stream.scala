@@ -103,13 +103,6 @@ trait Stream[+A] {
     zipWith(bs)((a, b) => (a, b))
   }
 
-  //  def zipWith[AA >: A, B](bs: Stream[AA])(f: (A, AA) => B): Stream[B] = {
-  //    unfold((this, bs))((x) => x match {
-  //      case (Cons(ah, at), Cons(bh, bt)) => Some(f(ah(), bh()), (at(), bt()))
-  //      case _                            => None
-  //    })
-  //  }
-
   def zipWith[B, C](bs: Stream[B])(f: (A, B) => C): Stream[C] = {
     unfold((this, bs)) {
       case (Cons(ah, at), Cons(bh, bt)) => Some(f(ah(), bh()), (at(), bt()))

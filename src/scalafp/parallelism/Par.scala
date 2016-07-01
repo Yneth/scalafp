@@ -79,7 +79,6 @@ object Par {
     map2(map2(map2(map2(a, b)((aa, bb) => (cc: C) => (dd: D) => (ee: E) => f(aa, bb, cc, dd, ee)), c)(_(_)), d)(_(_)), e)(_(_))
   }
 
-  // excersize 7.7
   // Given map(y)(id) == y, it’s a free theorem that map(map(y)(g))(f) ==
   // map(y)(f compose g). It is called map fusion.
   //
@@ -95,11 +94,9 @@ object Par {
       def call = a(es).get
     })
 
-  // Exercise 7.4
   def asyncF[A, B](f: A => B): A => Par[B] =
     a => lazyUnit(f(a))
 
-  // Exercise 7.5
   // Write this function, called sequence. No additional primitives are required. Do not call run.
   def sequence[A](ps: List[Par[A]]): Par[List[A]] =
     ps.foldRight(unit(List[A]()))((x, acc) => map2(x, acc)(_ :: _))
@@ -109,7 +106,6 @@ object Par {
     sequence(fbs)
   }
 
-  // Exercise 7.6
   // Implement parFilter, which filters elements of a list in parallel.
   def parFilter[A](as: List[A])(f: A => Boolean): Par[List[A]] = fork {
     val pars = as.map {
