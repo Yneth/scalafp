@@ -1,13 +1,12 @@
-package org.scalafp.chater1.section3
+package scalafp.datastructures
 
 object TreeTest {
   import Tree._
   
   val tree2 = Branch(Branch(Leaf(1), Leaf(2)), Leaf(6))
-                                                  //> tree2  : org.scalafp.chater1.section3.Branch[Int] = Branch(Branch(Leaf(1),Le
-                                                  //| af(2)),Leaf(6))
-  val tree1 = Branch(Leaf(1), Leaf(2))            //> tree1  : org.scalafp.chater1.section3.Branch[Int] = Branch(Leaf(1),Leaf(2))
-                                                  //| 
+                                                  //> tree2  : scalafp.datastructures.Branch[Int] = Branch(Branch(Leaf(1),Leaf(2))
+                                                  //| ,Leaf(6))
+  val tree1 = Branch(Leaf(1), Leaf(2))            //> tree1  : scalafp.datastructures.Branch[Int] = Branch(Leaf(1),Leaf(2))
   
   
   size(tree2)                                     //> res0: Int = 3

@@ -96,11 +96,9 @@ object List { // `List` companion object. Contains functions for creating and wo
     case Nil         => z
     case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
   }
-
-  def map[A, B](l: List[A])(f: A => B): List[B] = l match {
-    case Nil         => Nil
-    case Cons(x, xs) => foldLeft(l, List[B]())((acc: List[B], x: A) => Cons(f(x), acc))
-  }
+  
+  def map[A, B](l: List[A])(f: A => B): List[B] = 
+    foldLeft(l, List[B]())((acc: List[B], x: A) => Cons(f(x), acc))
 
   def foldLeft2[A, B](l: List[A], z: B)(f: (B, A) => B): B = {
     //foldRight(l, z)(()
@@ -140,7 +138,7 @@ object List { // `List` companion object. Contains functions for creating and wo
     flatMap(as)((x: A) => if (f(x)) List(x) else List[A]())
   }
 
-  //  def zipWith[A, B](as: List[A], bs: List[A])(f: (A, A) => B) : List[B] = {
-  //    flatMap(as)(aa => map(bs)(bb => f(aa, bb)))
-  //  }
+    def zipWith[A, B](as: List[A], bs: List[A])(f: (A, A) => B) : List[B] = {
+      flatMap(as)(aa => map(bs)(bb => f(aa, bb)))
+    }
 }
