@@ -9,6 +9,9 @@ sealed trait Either[+E, +A] {
       case Right(v) => Right(f(v))
     }
 
+  def mapViaFlatMap[B](f: A => B): Either[E, B] =
+    flatMap(a => Right(f(a)))
+  
   def flatMap[EE >: E, B](f: A => Either[EE, B]): Either[EE, B] =
     this match {
       case Left(e)  => Left(e)
